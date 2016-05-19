@@ -8,7 +8,7 @@
 
 @include('singles.form')
 
-{{ Form::submit('Invoeren', array('class' => 'btn btn-primary')) }}
+{{ Form::submit('Aanpassen', array('class' => 'btn btn-primary')) }}
 
 {{ Form::close() }}
 @endsection

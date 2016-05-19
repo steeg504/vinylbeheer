@@ -29,4 +29,16 @@ class SingleArtist extends Model
         $singleArtist->delete();
     }
 
+    public function RemoveByArtistId($artist_id){
+        $singleArtists = SingleArtist::where('artist_id', $artist_id);
+        foreach($singleArtists->get() as $singleArtist){
+            $single = Single::find($singleArtist->single_id);
+            $single->delete();
+        }
+
+        $singleArtists->delete();
+
+
+    }
+
 }
