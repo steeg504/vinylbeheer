@@ -1,6 +1,7 @@
 .idea
 .env
-vendor/
+_ide_helper.php
 node_modules/
 bootstrap/cache/
 storage/
+vendor/
