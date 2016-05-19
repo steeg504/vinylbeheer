@@ -1,7 +1,10 @@
+/vendor
+vendor/
+vendor
+/node_modules
 .idea
 .env
 _ide_helper.php
+_ide_helper_models.php
 node_modules/
 bootstrap/cache/
-storage/
-vendor/
