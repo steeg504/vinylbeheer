@@ -9,5 +9,5 @@
 
 <div class="form-group">
     {{ Form::label('artist', 'Artiest') }}
-    {{ Form::select('artist[]',$artists,1, array('class' => 'form-control')) }}
+    {{ Form::select('artist[]',$artists,, array('class' => 'form-control')) }}
 </div>

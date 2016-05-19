@@ -28,7 +28,7 @@
                     <td>
                         {{--*/ $komma = '' /*--}}
                         @foreach($single->getArtists() as $artist)
-                            {{ $artist->name }}
+                            {{ $komma }} {{ $artist->name }}
                             {{--*/ $komma = ', ' /*--}}
                         @endforeach
                     </td>
