@@ -24,4 +24,9 @@ class SingleArtist extends Model
     protected $hidden = [];
 
 
+    public function RemoveBySingleId($single_id){
+        $singleArtist = SingleArtist::where('single_id', $single_id);
+        $singleArtist->delete();
+    }
+
 }

@@ -38,7 +38,7 @@
                     <td>
                         {!! Form::open(array('action' => 'SingleController@destroy','url' => '/singles/'.$single->single_id, 'class'=>'pull-right', 'method' => 'DELETE')) !!}
 
-                        {!! Form::submit('Verwijderen', ['class' => 'btn btn-danger', 'onclick'=>'return confirm(\'Weet je het zeker?\')']) !!}
+                        {!! Form::submit('Verwijderen', ['class' => 'btn btn-danger', 'onclick'=>'return confirm(\'Weet je zeker dat je deze single wilt verwijderen?\')']) !!}
                         {!! Form::close() !!}
                     </td>
                 </tr>
