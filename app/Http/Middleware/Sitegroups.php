@@ -23,7 +23,7 @@ class Sitegroups
             if (Auth::check()){
                 if (count(Auth::user()->getSitegroups()) == 1) {
                     Session::put('sitegroup', Auth::user()->getSitegroups());
-                    return redirect('home');
+                    return redirect('sitegroups');
                 } else {
                     return redirect('sitegroups');
                 }
