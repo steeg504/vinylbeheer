@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\App;
 
 class User extends Authenticatable
 {
+    protected $table = 'USERS';
+    protected $primaryKey = 'user_id';
     /**
      * The attributes that are mass assignable.
      *
@@ -23,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getSitegroups()
+    {
+        return $this->belongsToMany('App\Sitegroup', 'USER_sitegroups')->get();
+    }
+
+    public function mayBySitegroup($sitegroup_id=null){
+        return (bool)$this->belongsToMany('App\Sitegroup', 'USER_sitegroups')->where('USER_sitegroups.sitegroup_id', '=', $sitegroup_id)->count();
+    }
 }

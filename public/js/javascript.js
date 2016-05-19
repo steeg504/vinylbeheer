@@ -1,3 +1,5 @@
-/**
- * Created by ernstjanvandersteege on 18-05-16.
- */
+$(document).ready(function(){
+    $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+        $(".alert").alert('close');
+    });
+});

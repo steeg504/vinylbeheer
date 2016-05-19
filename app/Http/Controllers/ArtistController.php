@@ -7,7 +7,7 @@ use App\Single;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class SingleController extends Controller {
+class ArtistController extends Controller {
 
     /**
      * Create a new controller instance.
@@ -28,9 +28,9 @@ class SingleController extends Controller {
     public function index()
     {
         // get all the singles
-        $singles = Single::where('sitegroup_id', '=', Session::get('sitegroup')->sitegroup_id)->get();
+        $artists = Artist::where('sitegroup_id', '=', Session::get('sitegroup')->sitegroup_id)->get();
         // load the view and pass the nerds
-        return view('singles.index')->with('singles', $singles);
+        //return view('singles.index')->with('artists', $artists);
     }
 
     /**
@@ -41,7 +41,7 @@ class SingleController extends Controller {
     public function create()
     {
         $artists = Artists::where('sitegroup_id', '=', Session::get('sitegroup')->sitegroup_id)->get();
-        return view('singles.create')->with('singles', $singles);
+        //return view('artist.create')->with('artists', $artists);
     }
 
     /**

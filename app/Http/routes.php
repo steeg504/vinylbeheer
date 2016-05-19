@@ -14,7 +14,15 @@
 use App\Http\Controllers\PageController;
 
 Route::auth();
+Route::get('sitegroups/{sitegroup_id}', 'Sitegroupcontroller@setSitegroup');
+Route::get('sitegroups', 'PageController@getPage');
 
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
-Route::get('{name}', 'PageController@getPage');
+Route::group(array('middleware' => array('sitegroup')),function(){
+    Route::get('/', 'HomeController@index');
+    Route::get('/home', 'HomeController@index');
+    Route::resource('singles', 'SingleController');
+    Route::get('{name}', 'PageController@getPage');
+});
+
+
+

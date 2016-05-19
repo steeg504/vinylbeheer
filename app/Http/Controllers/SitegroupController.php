@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Single;
+use App\Sitegroup;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
-class SingleController extends Controller {
+class SitegroupController extends Controller {
 
     /**
      * Create a new controller instance.
@@ -26,11 +28,7 @@ class SingleController extends Controller {
      */
     public function index()
     {
-        // get all the singles
-        $singles = Single::all();
 
-        // load the view and pass the nerds
-        return view('singles.index')->with('singles', $singles);
     }
 
     /**
@@ -95,6 +93,17 @@ class SingleController extends Controller {
     public function destroy($id)
     {
         //
+    }
+
+    public function setSitegroup($sitegroup_id=null){
+        if($sitegroup_id!==null) {
+            $sitegroup = Sitegroup::find($sitegroup_id);
+            if(Auth::user()->mayBySitegroup($sitegroup_id)) {
+                Session::put('sitegroup', $sitegroup);
+                return redirect('home');
+            }
+            return redirect('sitegroups');
+        }
     }
 
 }

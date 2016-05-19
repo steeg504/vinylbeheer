@@ -27,16 +27,20 @@
 
 </head>
 <body>
-
 <div class="wrapper">
+
     @include('sections.sidebar')
 
     <div class="main-panel">
+
         @include('sections.topnavigation')
 
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
+                    @if (Session::has('message'))
+                        <div class="alert alert-info">{{ Session::get('message') }}</div>
+                    @endif
                     @yield('content')
                 </div>
             </div>
@@ -68,6 +72,8 @@
 
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="/js/light-bootstrap-dashboard.js"></script>
+
+<script src="/js/javascript.js"></script>
 
 
 </html>

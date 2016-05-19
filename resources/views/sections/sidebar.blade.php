@@ -14,6 +14,12 @@
                     <p>Dashboard</p>
                 </a>
             </li>
+            <li>
+                <a href="/singles">
+                    <i class="pe-7s-graph"></i>
+                    <p>Singles</p>
+                </a>
+            </li>
 
         </ul>
     </div>

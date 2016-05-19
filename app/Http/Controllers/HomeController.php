@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -15,6 +16,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        //dd(Session::get('sitegroup'));
     }
 
     /**

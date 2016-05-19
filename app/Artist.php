@@ -3,10 +3,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Single extends Model
+class Artist extends Model
 {
-    protected $table = 'SINGLES';
-    protected $primaryKey = 'single_id';
+    protected $table = 'ARTISTS';
+    protected $primaryKey = 'artist_id';
 
     /**
      * Display a listing of the resource.
@@ -16,11 +16,10 @@ class Single extends Model
     public function index()
     {
         // get all the singles
-        $singles = Single::all();
-        $singles = Single::where('sitegroup_id', 1);
+        $artists = Artist::where('sitegroup_id', 1);
 
         // load the view and pass the singles
-        return view('singles.index')->with('singles', $singles);
+        return view('singles.index')->with('artists', $artists);
     }
 }
 
