@@ -8,18 +8,9 @@ class Artist extends Model
     protected $table = 'ARTISTS';
     protected $primaryKey = 'artist_id';
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
+    public function getSingles()
     {
-        // get all the singles
-        $artists = Artist::where('sitegroup_id', 1);
-
-        // load the view and pass the singles
-        return view('singles.index')->with('artists', $artists);
+        return $this->belongsToMany('App\Single', 'SINGLE_artists')->get();
     }
 }
 

@@ -21,6 +21,7 @@ Route::group(array('middleware' => array('sitegroup')),function(){
     Route::get('/', 'HomeController@index');
     Route::get('/home', 'HomeController@index');
     Route::resource('singles', 'SingleController');
+    Route::resource('artists', 'ArtistController');
     Route::get('{name}', 'PageController@getPage');
 });
 

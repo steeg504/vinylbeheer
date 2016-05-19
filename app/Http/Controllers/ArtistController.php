@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Artist;
 use App\Single;
-use Illuminate\Http\Request;
+use App\SingleArtist;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 
 class ArtistController extends Controller {
 
@@ -30,7 +34,7 @@ class ArtistController extends Controller {
         // get all the singles
         $artists = Artist::where('sitegroup_id', '=', Session::get('sitegroup')->sitegroup_id)->get();
         // load the view and pass the nerds
-        //return view('singles.index')->with('artists', $artists);
+        return view('artists.index')->with('artists', $artists);
     }
 
     /**
@@ -40,8 +44,8 @@ class ArtistController extends Controller {
      */
     public function create()
     {
-        $artists = Artists::where('sitegroup_id', '=', Session::get('sitegroup')->sitegroup_id)->get();
-        //return view('artist.create')->with('artists', $artists);
+        $artist = new Artist();
+        return view('artists.create')->with('artist', $artist);
     }
 
     /**
@@ -51,7 +55,28 @@ class ArtistController extends Controller {
      */
     public function store()
     {
-        //
+        // validate
+        $rules = array(
+            'name' => 'required'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('artists/create')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
+            $artist = new Artist();
+            $artist->sitegroup_id = Session::get('sitegroup')->sitegroup_id;
+            $artist->name = Input::get('name');
+            $artist->save();
+
+            // redirect
+            Session::flash('message', 'Artiest succesvol toegevoegd!');
+            return Redirect::to('artists');
+        }
     }
 
     /**
@@ -62,8 +87,7 @@ class ArtistController extends Controller {
      */
     public function show($id)
     {
-        $single = Single::find($id);
-        return view('singles.show')->with('single', $single);
+
     }
 
     /**
@@ -72,10 +96,10 @@ class ArtistController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($artist_id)
     {
-        $single = Single::find($id);
-        return view('singles.edit')->with('single', $single);
+        $artist = Artist::find($artist_id);
+        return view('artists.edit')->with('artist', $artist);
     }
 
     /**
@@ -84,9 +108,30 @@ class ArtistController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update($artist_id)
     {
-        //
+        // validate
+        $rules = array(
+            'name' => 'required'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('artists/' . $artist_id . '/edit')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
+            $artist = Artist::find($artist_id);
+            $artist->sitegroup_id = Session::get('sitegroup')->sitegroup_id;
+            $artist->name = Input::get('name');
+            $artist->save();
+
+            // redirect
+            Session::flash('message', 'Artiest succesvol aangepast!');
+            return Redirect::to('artists');
+        }
     }
 
     /**
@@ -95,15 +140,18 @@ class ArtistController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($artist_id)
     {
         // delete
-        $single = Single::find($id);
-        $single->delete();
+        $artist = Artist::find($artist_id);
+        $artist->delete();
+
+        $SingleArtist = new SingleArtist();
+        $SingleArtist->RemoveByArtistId($artist_id);
 
         // redirect
-        Session::flash('message', 'De single is succesvol verwijderd!');
-        return redirect('singles');
+        Session::flash('message', 'De artiest is succesvol verwijderd!');
+        return redirect('artists');
     }
 
 }
