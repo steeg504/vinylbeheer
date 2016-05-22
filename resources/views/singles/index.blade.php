@@ -4,12 +4,15 @@
     <div class="card">
         <div class="header">
             <h4 class="title">Singles</h4>
+
             <p class="category">Overzicht van alle singles</p>
         </div>
         <div class="content table-responsive table-full-width">
-            <div class="row">
-                <div class="col-xs-12">
-                    <a class="btn pull-right" href="{{ URL::to('singles/create') }}">Single toevoegen</a>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 text-right">
+                        <a class="btn" href="{{ URL::to('singles/create') }}">Single toevoegen</a>
+                    </div>
                 </div>
             </div>
             <table class="table table-hover table-striped">
@@ -23,25 +26,25 @@
                 </thead>
                 <tbody>
                 @foreach ($singles as $single)
-                <tr>
-                    <td>{{ $single->single_id }}</td>
-                    <td>
-                        {{--*/ $komma = '' /*--}}
-                        @foreach($single->getArtists() as $artist)
-                            {{ $komma }} {{ $artist->name }}
-                            {{--*/ $komma = ', ' /*--}}
-                        @endforeach
-                    </td>
-                    <td>{{ $single->sideA }}</td>
-                    <td>{{ $single->sideB }}</td>
-                    <td><a href="{{ URL::to('singles/' . $single->single_id . '/edit') }}">Bewerk</a></td>
-                    <td>
-                        {!! Form::open(array('action' => 'SingleController@destroy','url' => '/singles/'.$single->single_id, 'class'=>'pull-right', 'method' => 'DELETE')) !!}
+                    <tr>
+                        <td>{{ $single->single_id }}</td>
+                        <td>
+                            {{--*/ $komma = '' /*--}}
+                            @foreach($single->getArtists() as $artist)
+                                {{ $komma }} {{ $artist->name }}
+                                {{--*/ $komma = ', ' /*--}}
+                            @endforeach
+                        </td>
+                        <td>{{ $single->sideA }}</td>
+                        <td>{{ $single->sideB }}</td>
+                        <td><a href="{{ URL::to('singles/' . $single->single_id . '/edit') }}">Bewerk</a></td>
+                        <td>
+                            {!! Form::open(array('action' => 'SingleController@destroy','url' => '/singles/'.$single->single_id, 'class'=>'pull-right', 'method' => 'DELETE')) !!}
 
-                        {!! Form::submit('Verwijderen', ['class' => 'btn btn-danger', 'onclick'=>'return confirm(\'Weet je zeker dat je deze single wilt verwijderen?\')']) !!}
-                        {!! Form::close() !!}
-                    </td>
-                </tr>
+                            {!! Form::submit('Verwijderen', ['class' => 'btn btn-danger', 'onclick'=>'return confirm(\'Weet je zeker dat je deze single wilt verwijderen?\')']) !!}
+                            {!! Form::close() !!}
+                        </td>
+                    </tr>
                 @endforeach
                 </tbody>
             </table>

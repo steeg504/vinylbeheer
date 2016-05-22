@@ -1,0 +1,22 @@
+{
+  "name": "vinylbeheer",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Ernst Jan van der Steege"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/steeg504/vinylbeheer",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#^3.3.6"
+  }
+}

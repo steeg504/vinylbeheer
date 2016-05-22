@@ -7,10 +7,12 @@
             <p class="category">Overzicht van alle artiesten</p>
         </div>
         <div class="content table-responsive table-full-width">
+            <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-12">
-                    <a class="btn pull-right" href="{{ URL::to('artists/create') }}">Artiest toevoegen</a>
+                <div class="col-xs-12 text-right">
+                    <a class="btn" href="{{ URL::to('artists/create') }}">Artiest toevoegen</a>
                 </div>
+            </div>
             </div>
             <table class="table table-hover table-striped">
                 <thead>

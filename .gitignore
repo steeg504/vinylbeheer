@@ -2,5 +2,8 @@
 .env
 vendor/
 node_modules/
+bower_components/
 bootstrap/cache/
 storage/
+public/css
+public/js
