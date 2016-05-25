@@ -45,7 +45,9 @@
                 @endforeach
                 </tbody>
             </table>
-
+            <div class="text-center">
+            {{ $artists->render() }}
+            </div>
         </div>
     </div>
 @endsection

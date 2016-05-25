@@ -7,3 +7,4 @@ bootstrap/cache/
 storage/
 public/css
 public/js
+public/bundles

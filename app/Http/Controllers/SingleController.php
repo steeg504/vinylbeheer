@@ -33,7 +33,7 @@ class SingleController extends Controller
     public function index()
     {
         // get all the singles
-        $singles = Single::where('sitegroup_id', '=', Session::get('sitegroup')->sitegroup_id)->get();
+        $singles = Single::where('sitegroup_id', '=', Session::get('sitegroup')->sitegroup_id)->paginate(15);
         // load the view and pass the nerds
         return view('singles.index')->with('singles', $singles);
     }

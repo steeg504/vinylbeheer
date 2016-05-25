@@ -8,7 +8,7 @@ elixir(function (mix) {
     mix.sass(['app.scss','light-bootstrap-dashboard.scss'],'public/bundles/style.css');
 
     mix.styles(['public/bundles/style.css', 'public/bundles/bundle.css','../resources/assets/css/light-bootstrap-dashboard.css'], 'public/css/style.css', 'public');
-    mix.scripts(['public/bundles/bundle.js','../resources/assets/js/light-bootstrap-dashboard.js'], 'public/js/javascript.js', 'public')
+    mix.scripts(['public/bundles/bundle.js','../resources/assets/js/light-bootstrap-dashboard.js','../resources/assets/js/javascript.js'], 'public/js/javascript.js', 'public')
 
     mix.copy('bower_components/pixeden-stroke-7-icon/pe-icon-7-stroke/fonts', 'public/css')
 });

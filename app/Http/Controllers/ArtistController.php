@@ -32,7 +32,7 @@ class ArtistController extends Controller {
     public function index()
     {
         // get all the singles
-        $artists = Artist::where('sitegroup_id', '=', Session::get('sitegroup')->sitegroup_id)->get();
+        $artists = Artist::where('sitegroup_id', '=', Session::get('sitegroup')->sitegroup_id)->paginate(15);
         // load the view and pass the nerds
         return view('artists.index')->with('artists', $artists);
     }
