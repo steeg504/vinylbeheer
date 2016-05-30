@@ -9,5 +9,10 @@ class Sitegroup extends Model
 
 
 
+    public function getFields()
+    {
+        return $this->hasMany('App\SingleField', 'sitegroup_id')->get();
+    }
+
 }
 ?>

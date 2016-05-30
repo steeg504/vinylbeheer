@@ -16,6 +16,7 @@ class Single extends Model
 
 
 
+
 }
 
 ?>
