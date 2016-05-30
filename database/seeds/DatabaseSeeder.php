@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
 
         for ($i = 1; $i <= 50; $i++) {
-            $sitegroup_id = rand(0, 2);
+            $sitegroup_id = rand(1, 2);
 
             $artist_id = DB::table('Artists')->insertGetId([
                 'name' => str_random(15),
