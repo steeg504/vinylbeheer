@@ -112,7 +112,9 @@ class SingleController extends Controller
     {
         $singleModel = new Single();
         $single = Single::find($id);
-        $artists = Artist::where('sitegroup_id', '=', Session::get('sitegroup')->sitegroup_id)->orderBy('name')->pluck('name', 'artist_id');
+        $artistsDB = Artist::where('sitegroup_id', '=', Session::get('sitegroup')->sitegroup_id)->orderBy('name')->pluck('name', 'artist_id')->toArray();
+        $artists = array(0 => '')+$artistsDB;
+
         $selected_artists = $singleModel->getArtists();
         return view('singles.edit')->with('single', $single)->with('artists', $artists, $selected_artists);
     }
